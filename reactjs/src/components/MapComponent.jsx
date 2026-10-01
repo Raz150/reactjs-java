@@ -18,7 +18,6 @@ const MapEffect = ({ selectedPlace }) => {
 const MapComponent = () => {
   const selectedPlace = useSelector((state) => state.places.selectedPlace);
 
-  // Default to a generic location if none selected
   const defaultCenter = { lat: 39.8283, lng: -98.5795 };
 
   return (

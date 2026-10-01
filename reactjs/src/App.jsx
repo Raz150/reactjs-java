@@ -4,7 +4,6 @@ import AutocompleteSearch from './components/AutocompleteSearch';
 import MapComponent from './components/MapComponent';
 import RecentSearches from './components/RecentSearches';
 
-// Replace with your actual Google Maps API Key
 const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || '';
 
 function App() {

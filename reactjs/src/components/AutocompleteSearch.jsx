@@ -18,7 +18,6 @@ const AutocompleteSearch = () => {
       
       if (!place) return;
 
-      // Try fetching if location is missing
       if (!place.location) {
         try {
           await place.fetchFields({
@@ -35,7 +34,6 @@ const AutocompleteSearch = () => {
          return;
       }
 
-      // Extract text safely
       let extractedName = 'Unknown Place';
       if (place.displayName) {
         extractedName = typeof place.displayName === 'string' ? place.displayName : place.displayName.text;
@@ -55,7 +53,6 @@ const AutocompleteSearch = () => {
 
       dispatch(saveSearch(placeData));
       
-      // Clear the input after selection
       autocompleteElement.inputValue = '';
     };
 

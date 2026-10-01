@@ -5,5 +5,4 @@ export const store = configureStore({
   reducer: {
     places: placesReducer,
   },
-  // Redux thunk is included by default in configureStore
 });

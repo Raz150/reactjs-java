@@ -1,11 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-// Async thunk to save a place search
 export const saveSearch = createAsyncThunk(
   'places/saveSearch',
   async (placeData, { dispatch }) => {
-    // We can just simulate an async operation with Thunk here
-    // In the future this would trigger the webservice call to java spring boot API
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(placeData);
@@ -14,12 +11,9 @@ export const saveSearch = createAsyncThunk(
   }
 );
 
-// Async thunk to mark as favorite
 export const markAsFavorite = createAsyncThunk(
   'places/markAsFavorite',
   async (placeId) => {
-    // This will be implemented fully later with java spring boot API
-    // For now we just return the placeId to update the redux state
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(placeId);
@@ -45,7 +39,6 @@ export const placesSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(saveSearch.fulfilled, (state, action) => {
-        // Add to recent searches if not already there
         const exists = state.recentSearches.find(p => p.placeId === action.payload.placeId);
         if (!exists) {
           state.recentSearches.unshift({ ...action.payload, isFavorite: false });
@@ -56,7 +49,7 @@ export const placesSlice = createSlice({
         const placeId = action.payload;
         const place = state.recentSearches.find(p => p.placeId === placeId);
         if (place) {
-          place.isFavorite = !place.isFavorite; // toggle favorite
+          place.isFavorite = !place.isFavorite;
         }
         if (state.selectedPlace && state.selectedPlace.placeId === placeId) {
           state.selectedPlace.isFavorite = !state.selectedPlace.isFavorite;
